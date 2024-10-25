@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.category_name }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ category.category_name }}</h1>
+        <ul class="menu-items-list">
+            {% for item in menu_items %}
+                <li class="menu-item">
+                    <img src="{{ item.image.url }}" alt="{{ item.item_name }}" class="menu-item-image">
+                    <strong>{{ item.item_name }}</strong> <br>
+                    <span>{{ item.item_description }}</span> <br>
+                    <span>${{ item.price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="back-link" href="{% url 'category_list' %}">Back to Categories</a>
+    </div>
+</body>
+</html>
